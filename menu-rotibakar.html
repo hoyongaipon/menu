@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roti Bakar Edo Group</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Roti Bakar Edo Group cab. Cikuya</h1>
+    <p>Enak, hangat, dan bikin nagih!</p>
+  </header>
+
+  <div class="overlay menu">
+    <h2>Daftar Menu</h2>
+    <div id="menu-list"></div>
+  </div>
+
+  <div class="overlay form">
+    <h2>Pesan Sekarang</h2>
+    <input type="text" id="nama" placeholder="Nama">
+    <select id="pesanan"></select>
+    <input type="number" id="jumlah" value="1" min="1">
+    <button onclick="pesan()">Pesan via WhatsApp</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
