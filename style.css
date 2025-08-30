@@ -47,9 +47,35 @@ header p {
 .menu-item {
   display: flex;
   justify-content: space-between;
-  padding: 5px 0;
-  border-bottom: 1px solid #ddd;
+  align-items: center;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.menu-label {
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Kotak kanan untuk checkbox dan input jumlah */
+.menu-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-controls input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
 
 #pesanan label {
   display: flex;
