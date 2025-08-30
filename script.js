@@ -26,42 +26,41 @@ const menu = [
   { nama: "Greentea Chrunchy (Double)", harga: 30000 }
 ];
 
-// Render daftar menu
+// Render daftar menu + checkbox
 const menuList = document.getElementById("menu-list");
-const pesananSelect = document.getElementById("pesanan");
+const pesananDiv = document.getElementById("pesanan");
 
 menu.forEach(item => {
-  // Tambah ke daftar menu
+  // daftar menu di atas
   let div = document.createElement("div");
   div.classList.add("menu-item");
   div.innerHTML = `<span>${item.nama}</span><span>Rp${item.harga.toLocaleString("id-ID")}</span>`;
   menuList.appendChild(div);
 
-  // Tambah ke dropdown
-  let option = document.createElement("option");
-  option.value = item.nama;
-  option.textContent = item.nama;
-  pesananSelect.appendChild(option);
+  // checkbox untuk form
+  let label = document.createElement("label");
+  label.innerHTML = `<input type="checkbox" value="${item.nama}"> ${item.nama}`;
+  pesananDiv.appendChild(label);
 });
 
 // Fungsi pesan WA
 function pesan() {
   let nama = document.getElementById('nama').value;
   let alamat = document.getElementById('alamat').value;
-  let checkboxes = document.querySelectorAll('#pesanan input[type=checkbox]:checked');
   let jumlah = document.getElementById('jumlah').value;
+  let checkboxes = document.querySelectorAll('#pesanan input[type=checkbox]:checked');
 
   if (nama === "" || alamat === "" || checkboxes.length === 0) {
     alert("Harap isi nama, alamat, dan pilih minimal 1 menu!");
     return;
   }
 
-  // Ambil semua menu yang dipilih
+  // Ambil semua menu yang dicentang
   let pesanan = [];
   checkboxes.forEach(cb => pesanan.push(cb.value));
-  
-  let pesanWA = `Halo, saya ${nama}.\nAlamat: ${alamat}\nSaya ingin memesan:\n${pesanan} x${jumlah}`;
-  let nomorWA = "6285171130091"; // ganti dengan nomor WA penjual
+
+  let pesanWA = `Halo, saya ${nama}.\nAlamat: ${alamat}\nSaya ingin memesan:\n${pesanan.join(", ")} x${jumlah}`;
+  let nomorWA = "6281234567890"; // ganti dengan nomor WA penjual
   let url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesanWA)}`;
   
   window.open(url, '_blank');
