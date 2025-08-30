@@ -30,24 +30,35 @@ const menu = [
 const menuList = document.getElementById("menu-list");
 const pesananDiv = document.getElementById("pesanan");
 
-menu.forEach(item => {
+menu.forEach((item, index) => {
   // daftar menu di atas
   let div = document.createElement("div");
   div.classList.add("menu-item");
   div.innerHTML = `<span>${item.nama}</span><span>Rp${item.harga.toLocaleString("id-ID")}</span>`;
   menuList.appendChild(div);
 
-  // checkbox untuk form
+  // checkbox + jumlah untuk form
   let label = document.createElement("label");
-  label.innerHTML = `<input type="checkbox" value="${item.nama}"> ${item.nama}`;
+  label.innerHTML = `
+    <span>
+      <input type="checkbox" value="${item.nama}" data-harga="${item.harga}" id="menu-${index}">
+      ${item.nama}
+    </span>
+    <input type="number" id="jumlah-${index}" value="1" min="1" disabled>
+  `;
   pesananDiv.appendChild(label);
+
+  // Aktifkan input jumlah hanya jika checkbox dicentang
+  label.querySelector("input[type=checkbox]").addEventListener("change", (e) => {
+    const jumlahInput = document.getElementById(`jumlah-${index}`);
+    jumlahInput.disabled = !e.target.checked;
+  });
 });
 
 // Fungsi pesan WA
 function pesan() {
-  let nama = document.getElementById('nama').value;
-  let alamat = document.getElementById('alamat').value;
-  let jumlah = document.getElementById('jumlah').value;
+  let nama = document.getElementById('nama').value.trim();
+  let alamat = document.getElementById('alamat').value.trim();
   let checkboxes = document.querySelectorAll('#pesanan input[type=checkbox]:checked');
 
   if (nama === "" || alamat === "" || checkboxes.length === 0) {
@@ -55,12 +66,19 @@ function pesan() {
     return;
   }
 
-  // Ambil semua menu yang dicentang
   let pesanan = [];
-  checkboxes.forEach(cb => pesanan.push(cb.value));
+  let total = 0;
 
-  let pesanWA = `Halo, saya ${nama}.\nAlamat: ${alamat}\nSaya ingin memesan:\n${pesanan.join(", ")} x${jumlah}`;
-  let nomorWA = "6285171130091"; // ganti dengan nomor WA penjual
+  checkboxes.forEach(cb => {
+    let index = cb.id.split("-")[1];
+    let jumlah = parseInt(document.getElementById(`jumlah-${index}`).value);
+    let harga = parseInt(cb.getAttribute("data-harga"));
+    pesanan.push(`${cb.value} x${jumlah} (Rp${(harga * jumlah).toLocaleString("id-ID")})`);
+    total += harga * jumlah;
+  });
+
+  let pesanWA = `Halo, saya ${nama}.\nAlamat: ${alamat}\nSaya ingin memesan:\n\n${pesanan.join("\n")}\n\nTotal: Rp${total.toLocaleString("id-ID")}`;
+  let nomorWA = "6285171130091"; // ganti nomor WA penjual
   let url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesanWA)}`;
   
   window.open(url, '_blank');
