@@ -60,7 +60,7 @@ function pesan() {
   checkboxes.forEach(cb => pesanan.push(cb.value));
 
   let pesanWA = `Halo, saya ${nama}.\nAlamat: ${alamat}\nSaya ingin memesan:\n${pesanan.join(", ")} x${jumlah}`;
-  let nomorWA = "6281234567890"; // ganti dengan nomor WA penjual
+  let nomorWA = "6285171130091"; // ganti dengan nomor WA penjual
   let url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesanWA)}`;
   
   window.open(url, '_blank');
