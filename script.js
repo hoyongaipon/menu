@@ -47,14 +47,18 @@ menu.forEach(item => {
 // Fungsi pesan WA
 function pesan() {
   let nama = document.getElementById('nama').value;
-  let alamat = document.getElementById('alamat').value; // ambil alamat
-  let pesanan = document.getElementById('pesanan').value;
+  let alamat = document.getElementById('alamat').value;
+  let checkboxes = document.querySelectorAll('#pesanan input[type=checkbox]:checked');
   let jumlah = document.getElementById('jumlah').value;
-  
-  if (nama === "" || alamat === "" || pesanan === "") {
-    alert("Harap isi nama, alamat, dan pilih menu!");
+
+  if (nama === "" || alamat === "" || checkboxes.length === 0) {
+    alert("Harap isi nama, alamat, dan pilih minimal 1 menu!");
     return;
   }
+
+  // Ambil semua menu yang dipilih
+  let pesanan = [];
+  checkboxes.forEach(cb => pesanan.push(cb.value));
   
   let pesanWA = `Halo, saya ${nama}.\nAlamat: ${alamat}\nSaya ingin memesan:\n${pesanan} x${jumlah}`;
   let nomorWA = "6285171130091"; // ganti dengan nomor WA penjual
