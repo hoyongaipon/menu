@@ -52,6 +52,10 @@ input, select, button {
   border: 1px solid #ccc;
 }
 
+input#alamat {
+  margin-top: -2px;
+}
+
 button {
   background-color: #5a3212;
   color: white;
