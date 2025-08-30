@@ -47,16 +47,17 @@ menu.forEach(item => {
 // Fungsi pesan WA
 function pesan() {
   let nama = document.getElementById('nama').value;
+  let alamat = document.getElementById('alamat').value; // ambil alamat
   let pesanan = document.getElementById('pesanan').value;
   let jumlah = document.getElementById('jumlah').value;
   
-  if (nama === "" || pesanan === "") {
-    alert("Harap isi nama dan pilih menu!");
+  if (nama === "" || alamat === "" || pesanan === "") {
+    alert("Harap isi nama, alamat, dan pilih menu!");
     return;
   }
   
-  let pesanWA = `Halo, saya ${nama}. Saya ingin memesan:\n${pesanan} x${jumlah}`;
-  let nomorWA = "6285171130091"; // Ganti dengan nomor WhatsApp penjual
+  let pesanWA = `Halo, saya ${nama}.\nAlamat: ${alamat}\nSaya ingin memesan:\n${pesanan} x${jumlah}`;
+  let nomorWA = "6285171130091"; // ganti dengan nomor WA penjual
   let url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesanWA)}`;
   
   window.open(url, '_blank');
