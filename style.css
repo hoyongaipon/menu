@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: url('photo_2025-08-30_06-33-22.jpg') no-repeat center center/cover;
+  background: url('background.jpg') no-repeat center center/cover;
 }
 
 .overlay {
@@ -25,6 +25,13 @@ header h1 {
   color: #5a3212;
 }
 
+header .alamat {
+  margin: 5px 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: #444;
+}
+
 header p {
   margin: 5px 0 0;
   font-style: italic;
@@ -44,16 +51,18 @@ header p {
   border-bottom: 1px solid #ddd;
 }
 
+#pesanan label {
+  display: block;
+  margin: 5px 0;
+  font-size: 14px;
+}
+
 input, select, button {
   width: 100%;
   padding: 10px;
   margin: 8px 0;
   border-radius: 8px;
   border: 1px solid #ccc;
-}
-
-input#alamat {
-  margin-top: -2px;
 }
 
 button {
