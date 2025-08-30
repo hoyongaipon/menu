@@ -10,6 +10,7 @@
 
   <header>
     <h1>Roti Bakar Edo Group cab. Cikuya</h1>
+    <p class="alamat">Jl. Raya Cikuya No. 123, Tangerang</p>
     <p>Enak, hangat, dan bikin nagih!</p>
   </header>
 
@@ -21,8 +22,10 @@
   <div class="overlay form">
     <h2>Pesan Sekarang</h2>
     <input type="text" id="nama" placeholder="Nama">
-    <input type="text" id="alamat" placeholder="Alamat"> <!-- Tambahan alamat -->
-    <select id="pesanan"></select>
+    <input type="text" id="alamat" placeholder="Alamat">
+
+    <div id="pesanan"></div> <!-- daftar menu checkbox -->
+    
     <input type="number" id="jumlah" value="1" min="1">
     <button onclick="pesan()">Pesan via WhatsApp</button>
   </div>
