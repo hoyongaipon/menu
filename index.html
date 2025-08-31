@@ -8,123 +8,30 @@
 </head>
 <body>
 
-  <header>
-    <h1>Roti Bakar Edo Group cab. Cikuya</h1>
-    <p class="alamat">Jl. Cipanas Galunggung No.8, Tawangbanteng,</p>
-    <p>Enak, hangat, dan bikin nagih!</p>
-  </header>
-
-<div class="overlay menu">
+  <!-- Bagian Daftar Menu -->
+  <section class="card">
     <h2>Daftar Menu</h2>
-    <div id="menu-list"></div>
-  </div>
+    <div id="daftar-menu"></div>
+  </section>
 
-
-  <div class="overlay form">
+  <!-- Bagian Pesan Sekarang -->
+  <section class="card">
     <h2>Pesan Sekarang</h2>
-    <input type="text" id="nama" placeholder="Nama">
-    <input type="text" id="alamat" placeholder="Alamat">
+    <form id="order-form">
+      <input type="text" placeholder="Nama" required>
+      <input type="text" placeholder="Alamat" required>
 
-    <div class="menu-list">
-      <div class="menu-item">
-        <label class="menu-label">Nanas (Single)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Nanas (Single)">
-          <input type="number" min="1" value="1">
-        </div>
+      <div id="order-menu"></div> <!-- 👈 checkbox + jumlah otomatis muncul di sini -->
+
+      <!-- Total Harga -->
+      <div class="total-container">
+        <strong>Total Harga: </strong>
+        <span id="total-harga">Rp0</span>
       </div>
 
-      <div class="menu-item">
-        <label class="menu-label">Strawberry (Single)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Strawberry (Single)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <label class="menu-label">Blueberry (Single)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Blueberry (Single)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <label class="menu-label">Coklat (Single)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Coklat (Single)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <label class="menu-label">Nanas (Double)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Nanas (Double)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <label class="menu-label">Strawberry (Double)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Strawberry (Double)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <label class="menu-label">Blueberry (Double)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Blueberry (Double)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <label class="menu-label">Coklat (Double)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Coklat (Double)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <label class="menu-label">Keju (Single)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Keju (Single)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <label class="menu-label">Coklat Kacang (Single)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Coklat Kacang (Single)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <label class="menu-label">Coklat Keju (Single)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Coklat Keju (Single)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-
-      <div class="menu-item">
-        <label class="menu-label">Keju (Double)</label>
-        <div class="menu-controls">
-          <input type="checkbox" value="Keju (Double)">
-          <input type="number" min="1" value="1">
-        </div>
-      </div>
-    </div>
-
-    <button onclick="kirimPesanan()">Kirim Pesanan</button>
-  </div>
+      <button type="submit">Pesan</button>
+    </form>
+  </section>
 
   <script src="script.js"></script>
 </body>
