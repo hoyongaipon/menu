@@ -26,60 +26,64 @@ const menu = [
   { nama: "Greentea Chrunchy (Double)", harga: 30000 }
 ];
 
-// Render daftar menu + checkbox
-const menuList = document.getElementById("menu-list");
-const pesananDiv = document.getElementById("pesanan");
+// tampilkan daftar menu
+function tampilkanDaftarMenu() {
+  const daftarMenuContainer = document.getElementById("daftar-menu");
+  daftarMenuContainer.innerHTML = "";
 
-menu.forEach((item, index) => {
-  // daftar menu di atas
-  let div = document.createElement("div");
-  div.classList.add("menu-item");
-  div.innerHTML = `<span>${item.nama}</span><span>Rp${item.harga.toLocaleString("id-ID")}</span>`;
-  menuList.appendChild(div);
+  menu.forEach(item => {
+    const menuItem = document.createElement("div");
+    menuItem.classList.add("menu-item");
 
-  // checkbox + jumlah untuk form
-  let label = document.createElement("label");
-  label.innerHTML = `
-    <span>
-      <input type="checkbox" value="${item.nama}" data-harga="${item.harga}" id="menu-${index}">
-      ${item.nama}
-    </span>
-    <input type="number" id="jumlah-${index}" value="1" min="1" disabled>
-  `;
-  pesananDiv.appendChild(label);
+    menuItem.innerHTML = `
+      <span class="menu-name">${item.nama}</span>
+      <span class="menu-price">Rp${item.harga.toLocaleString("id-ID")}</span>
+    `;
 
-  // Aktifkan input jumlah hanya jika checkbox dicentang
-  label.querySelector("input[type=checkbox]").addEventListener("change", (e) => {
-    const jumlahInput = document.getElementById(`jumlah-${index}`);
-    jumlahInput.disabled = !e.target.checked;
+    daftarMenuContainer.appendChild(menuItem);
   });
-});
-
-// Fungsi pesan WA
-function pesan() {
-  let nama = document.getElementById('nama').value.trim();
-  let alamat = document.getElementById('alamat').value.trim();
-  let checkboxes = document.querySelectorAll('#pesanan input[type=checkbox]:checked');
-
-  if (nama === "" || alamat === "" || checkboxes.length === 0) {
-    alert("Harap isi nama, alamat, dan pilih minimal 1 menu!");
-    return;
-  }
-
-  let pesanan = [];
-  let total = 0;
-
-  checkboxes.forEach(cb => {
-    let index = cb.id.split("-")[1];
-    let jumlah = parseInt(document.getElementById(`jumlah-${index}`).value);
-    let harga = parseInt(cb.getAttribute("data-harga"));
-    pesanan.push(`${cb.value} x${jumlah} (Rp${(harga * jumlah).toLocaleString("id-ID")})`);
-    total += harga * jumlah;
-  });
-
-  let pesanWA = `Halo, saya ${nama}.\nAlamat: ${alamat}\nSaya ingin memesan:\n\n${pesanan.join("\n")}\n\nTotal: Rp${total.toLocaleString("id-ID")}`;
-  let nomorWA = "6285171130091"; // ganti nomor WA penjual
-  let url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesanWA)}`;
-  
-  window.open(url, '_blank');
 }
+
+// tampilkan form pesan sekarang
+function tampilkanOrderMenu() {
+  const orderMenuContainer = document.getElementById("order-menu");
+  orderMenuContainer.innerHTML = "";
+
+  menu.forEach((item, index) => {
+    const orderItem = document.createElement("div");
+    orderItem.classList.add("order-item");
+
+    orderItem.innerHTML = `
+      <label for="menu-${index}">${item.nama}</label>
+      <input type="checkbox" id="menu-${index}" data-index="${index}">
+      <input type="number" id="qty-${index}" min="1" value="1" data-index="${index}">
+    `;
+
+    orderMenuContainer.appendChild(orderItem);
+  });
+
+  // pasang event listener untuk checkbox & jumlah
+  document.querySelectorAll("#order-menu input").forEach(input => {
+    input.addEventListener("change", hitungTotal);
+  });
+}
+
+// hitung total harga
+function hitungTotal() {
+  let total = 0;
+  menu.forEach((item, index) => {
+    const checkbox = document.getElementById(`menu-${index}`);
+    const qty = document.getElementById(`qty-${index}`);
+    if (checkbox && checkbox.checked) {
+      total += item.harga * parseInt(qty.value || 1);
+    }
+  });
+
+  document.getElementById("total-harga").textContent = 
+    "Rp" + total.toLocaleString("id-ID");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  tampilkanDaftarMenu();
+  tampilkanOrderMenu();
+});
