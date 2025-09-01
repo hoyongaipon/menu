@@ -3,35 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roti Bakar Edo Group</title>
+  <title>Roti Bakar Sari Edo Group Cab. Cikuya</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <h1>Roti Bakar Sari Edo Group cab. Cikuya</h1>
+    <p><em>Jl. Cipanas Galunggung No.8, Tawangbanteng</em></p>
+    <p>Enak, hangat, dan bikin nagih!</p>
+  </header>
 
-  <!-- Bagian Daftar Menu -->
-  <section class="card">
-    <h2>Daftar Menu</h2>
-    <div id="daftar-menu"></div>
-  </section>
+  <main>
+    <section class="menu-section">
+      <h2>Daftar Menu</h2>
+      <form id="orderForm">
+        <table>
+          <thead>
+            <tr>
+              <th>Pilih</th>
+              <th>Menu</th>
+              <th>Harga</th>
+              <th>Jumlah</th>
+            </tr>
+          </thead>
+          <tbody id="menuTable"></tbody>
+        </table>
 
-  <!-- Bagian Pesan Sekarang -->
-  <section class="card">
-    <h2>Pesan Sekarang</h2>
-    <form id="order-form">
-      <input type="text" placeholder="Nama" required>
-      <input type="text" placeholder="Alamat" required>
+        <div class="total-box">
+          <strong>Total: Rp<span id="totalHarga">0</span></strong>
+        </div>
 
-      <div id="order-menu"></div> <!-- 👈 checkbox + jumlah otomatis muncul di sini -->
-
-      <!-- Total Harga -->
-      <div class="total-container">
-        <strong>Total Harga: </strong>
-        <span id="total-harga">Rp0</span>
-      </div>
-
-      <button type="submit">Pesan</button>
-    </form>
-  </section>
+        <button type="button" id="pesanBtn">Pesan via WhatsApp</button>
+      </form>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
