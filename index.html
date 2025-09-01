@@ -3,40 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roti Bakar Sari Edo Group Cab. Cikuya</title>
+  <title>Roti Bakar Sari Edo Group - Cab. Cikuya</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Roti Bakar Sari Edo Group cab. Cikuya</h1>
-    <p><em>Jl. Cipanas Galunggung No.8, Tawangbanteng</em></p>
-    <p>Enak, hangat, dan bikin nagih!</p>
-  </header>
+  <div class="container">
+    <header>
+      <h1>🍞 Roti Bakar Sari Edo Group Cab. Cikuya</h1>
+      <p><em>Jl. Cipanas Galunggung No.8, Tawangbanteng</em></p>
+      <p>Enak, hangat, dan bikin nagih!</p>
+    </header>
 
-  <main>
     <section class="menu-section">
-      <h2>Daftar Menu</h2>
+      <h2>📋 Daftar Menu</h2>
+      <table id="menuTable">
+        <thead>
+          <tr>
+            <th>Pilih</th>
+            <th>Menu</th>
+            <th>Harga</th>
+            <th>Jumlah</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Menu otomatis dari JS -->
+        </tbody>
+      </table>
+    </section>
+
+    <section class="order-section">
+      <h2>📝 Data Pemesan</h2>
       <form id="orderForm">
-        <table>
-          <thead>
-            <tr>
-              <th>Pilih</th>
-              <th>Menu</th>
-              <th>Harga</th>
-              <th>Jumlah</th>
-            </tr>
-          </thead>
-          <tbody id="menuTable"></tbody>
-        </table>
-
-        <div class="total-box">
-          <strong>Total: Rp<span id="totalHarga">0</span></strong>
-        </div>
-
-        <button type="button" id="pesanBtn">Pesan via WhatsApp</button>
+        <label>Nama:
+          <input type="text" id="nama" required>
+        </label>
+        <label>Alamat:
+          <textarea id="alamat" required></textarea>
+        </label>
       </form>
     </section>
-  </main>
+
+    <section class="total-section">
+      <h2>💰 Total Harga</h2>
+      <p id="totalHarga">Rp0</p>
+      <button id="pesanBtn" disabled>Pesan via WhatsApp</button>
+    </section>
+  </div>
 
   <script src="script.js"></script>
 </body>
