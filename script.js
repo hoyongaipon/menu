@@ -16,7 +16,7 @@ const menu = [
   { nama: "Full Keju (Single)", harga: 15000, gambar: "img/full-keju-single.jpg" },
   { nama: "Tiramisu (Single)", harga: 15000, gambar: "img/tiramisu-single.jpg" },
   { nama: "Choco Spread (Single)", harga: 15000, gambar: "img/choco-spread-single.jpg" },
-  { nama: "Choco Crunchy (Double)", harga: 15000, gambar: "img/choco-crunchy.jpg" },
+  { nama: "Choco Crunchy (Single)", harga: 15000, gambar: "img/choco-crunchy.jpg" },
   { nama: "Greentea (Single)", harga: 15000, gambar: "img/greentea-single.jpg" },
   { nama: "Full Keju (Double)", harga: 30000, gambar: "img/full-keju-double.jpg" },
   { nama: "Tiramisu (Double)", harga: 30000, gambar: "img/tiramisu-double.jpg" },
