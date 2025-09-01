@@ -1,81 +1,105 @@
 const menu = [
-  { nama: "Selai Nanas (Single)", harga: 10000 },
-  { nama: "Selai Strawberry (Single)", harga: 10000 },
-  { nama: "Selai Blueberry (Single)", harga: 10000 },
-  { nama: "Selai Nanas (Double)", harga: 15000 },
-  { nama: "Selai Strawberry (Double)", harga: 15000 },
-  { nama: "Selai Blueberry (Double)", harga: 15000 },
-  { nama: "Coklat (Single)", harga: 13000 },
-  { nama: "Keju (Single)", harga: 13000 },
-  { nama: "Kacang (Single)", harga: 13000 },
-  { nama: "Coklat (Double)", harga: 20000 },
-  { nama: "Keju (Double)", harga: 20000 },
-  { nama: "Kacang (Double)", harga: 20000 },
-  { nama: "Coklat Kacang (Double)", harga: 20000 },
-  { nama: "Coklat Keju (Double)", harga: 20000 },
-  { nama: "Full Keju (Single)", harga: 15000 },
-  { nama: "Tiramisu (Single)", harga: 15000 },
-  { nama: "Choco Spread (Single)", harga: 15000 },
-  { nama: "Choco Crunchy (Double)", harga: 15000 },
-  { nama: "Greentea (Single)", harga: 15000 },
-  { nama: "Full Keju (Double)", harga: 30000 },
-  { nama: "Tiramisu (Double)", harga: 30000 },
-  { nama: "Choco Spread (Double)", harga: 30000 },
-  { nama: "Choco Crunchy (Double)", harga: 30000 },
-  { nama: "Greentea (Double)", harga: 30000 },
-  { nama: "Roti Asin (Single)", harga: 10000 },
-  { nama: "Roti Asin (Double)", harga: 20000 },
+  { nama: "Selai Nanas (Single)", harga: 10000, gambar: "img/nanas-single.jpg" },
+  { nama: "Selai Strawberry (Single)", harga: 10000, gambar: "img/strawberry-single.jpg" },
+  { nama: "Selai Blueberry (Single)", harga: 10000, gambar: "img/blueberry-single.jpg" },
+  { nama: "Selai Nanas (Double)", harga: 15000, gambar: "img/nanas-double.jpg" },
+  { nama: "Selai Strawberry (Double)", harga: 15000, gambar: "img/strawberry-double.jpg" },
+  { nama: "Selai Blueberry (Double)", harga: 15000, gambar: "img/blueberry-double.jpg" },
+  { nama: "Coklat (Single)", harga: 13000, gambar: "img/coklat-single.jpg" },
+  { nama: "Keju (Single)", harga: 13000, gambar: "img/keju-single.jpg" },
+  { nama: "Kacang (Single)", harga: 13000, gambar: "img/kacang-single.jpg" },
+  { nama: "Coklat (Double)", harga: 20000, gambar: "img/coklat-double.jpg" },
+  { nama: "Keju (Double)", harga: 20000, gambar: "img/keju-double.jpg" },
+  { nama: "Kacang (Double)", harga: 20000, gambar: "img/kacang-double.jpg" },
+  { nama: "Coklat Kacang (Double)", harga: 20000, gambar: "img/coklat-kacang.jpg" },
+  { nama: "Coklat Keju (Double)", harga: 20000, gambar: "img/coklat-keju.jpg" },
+  { nama: "Full Keju (Single)", harga: 15000, gambar: "img/full-keju-single.jpg" },
+  { nama: "Tiramisu (Single)", harga: 15000, gambar: "img/tiramisu-single.jpg" },
+  { nama: "Choco Spread (Single)", harga: 15000, gambar: "img/choco-spread-single.jpg" },
+  { nama: "Choco Crunchy (Double)", harga: 15000, gambar: "img/choco-crunchy.jpg" },
+  { nama: "Greentea (Single)", harga: 15000, gambar: "img/greentea-single.jpg" },
+  { nama: "Full Keju (Double)", harga: 30000, gambar: "img/full-keju-double.jpg" },
+  { nama: "Tiramisu (Double)", harga: 30000, gambar: "img/tiramisu-double.jpg" },
+  { nama: "Choco Spread (Double)", harga: 30000, gambar: "img/choco-spread-double.jpg" },
+  { nama: "Choco Crunchy (Double)", harga: 30000, gambar: "img/choco-crunchy-double.jpg" },
+  { nama: "Greentea (Double)", harga: 30000, gambar: "img/greentea-double.jpg" },
+  { nama: "Roti Asin (Single)", harga: 10000, gambar: "img/roti-asin-single.jpg" },
+  { nama: "Roti Asin (Double)", harga: 20000, gambar: "img/roti-asin-double.jpg" }
 ];
 
-const menuTable = document.getElementById("menuTable");
+const tbody = document.querySelector("#menuTable tbody");
 const totalHargaEl = document.getElementById("totalHarga");
 const pesanBtn = document.getElementById("pesanBtn");
 
-menu.forEach((item, index) => {
-  const row = document.createElement("tr");
-  row.innerHTML = `
-    <td><input type="checkbox" class="menu-check" data-index="${index}"></td>
-    <td>${item.nama}</td>
-    <td>Rp${item.harga.toLocaleString("id-ID")}</td>
-    <td><input type="number" class="menu-qty" data-index="${index}" value="1" min="1" disabled></td>
-  `;
-  menuTable.appendChild(row);
-});
+function renderMenu() {
+  menu.forEach((item, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td><input type="checkbox" class="pilih" data-index="${index}"></td>
+      <td>${item.nama}</td>
+      <td><img src="${item.gambar}" alt="${item.nama}"></td>
+      <td>Rp${item.harga.toLocaleString()}</td>
+      <td><input type="number" class="jumlah" data-index="${index}" value="1" min="1" disabled></td>
+    `;
+    tbody.appendChild(row);
+  });
+}
 
 function hitungTotal() {
   let total = 0;
-  document.querySelectorAll(".menu-check").forEach(check => {
-    const index = check.dataset.index;
-    const qtyInput = document.querySelector(`.menu-qty[data-index="${index}"]`);
-    if (check.checked) {
-      total += menu[index].harga * parseInt(qtyInput.value);
+  document.querySelectorAll(".pilih").forEach(cb => {
+    if (cb.checked) {
+      const index = cb.dataset.index;
+      const jumlah = document.querySelector(`.jumlah[data-index="${index}"]`).value;
+      total += menu[index].harga * jumlah;
     }
   });
-  totalHargaEl.textContent = total.toLocaleString("id-ID");
+  totalHargaEl.textContent = `Rp${total.toLocaleString()}`;
+  cekPesanAktif();
 }
 
-menuTable.addEventListener("change", (e) => {
-  if (e.target.classList.contains("menu-check")) {
-    const index = e.target.dataset.index;
-    const qtyInput = document.querySelector(`.menu-qty[data-index="${index}"]`);
-    qtyInput.disabled = !e.target.checked;
-  }
-  hitungTotal();
-});
+function cekPesanAktif() {
+  const adaPesanan = Array.from(document.querySelectorAll(".pilih")).some(cb => cb.checked);
+  const nama = document.getElementById("nama").value.trim();
+  const alamat = document.getElementById("alamat").value.trim();
+  pesanBtn.disabled = !(adaPesanan && nama && alamat);
+}
 
-menuTable.addEventListener("input", (e) => {
-  if (e.target.classList.contains("menu-qty")) {
+function buatPesan() {
+  const nama = document.getElementById("nama").value.trim();
+  const alamat = document.getElementById("alamat").value.trim();
+  let pesan = `Halo, saya ingin pesan:\n\n`;
+  document.querySelectorAll(".pilih").forEach(cb => {
+    if (cb.checked) {
+      const index = cb.dataset.index;
+      const jumlah = document.querySelector(`.jumlah[data-index="${index}"]`).value;
+      pesan += `- ${menu[index].nama} x${jumlah} (Rp${(menu[index].harga * jumlah).toLocaleString()})\n`;
+    }
+  });
+  pesan += `\nAtas nama: ${nama}\nAlamat: ${alamat}`;
+  const total = totalHargaEl.textContent;
+  pesan += `\n\nTotal: ${total}`;
+  return encodeURIComponent(pesan);
+}
+
+document.addEventListener("change", (e) => {
+  if (e.target.classList.contains("pilih")) {
+    const index = e.target.dataset.index;
+    const jumlahInput = document.querySelector(`.jumlah[data-index="${index}"]`);
+    jumlahInput.disabled = !e.target.checked;
     hitungTotal();
+  }
+  if (e.target.classList.contains("jumlah")) {
+    hitungTotal();
+  }
+  if (e.target.id === "nama" || e.target.id === "alamat") {
+    cekPesanAktif();
   }
 });
 
 pesanBtn.addEventListener("click", () => {
-  let pesan = "Halo, saya mau pesan:%0A";
-  document.querySelectorAll(".menu-check:checked").forEach(check => {
-    const index = check.dataset.index;
-    const qty = document.querySelector(`.menu-qty[data-index="${index}"]`).value;
-    pesan += `- ${menu[index].nama} x${qty} (Rp${(menu[index].harga * qty).toLocaleString("id-ID")})%0A`;
-  });
-  pesan += `%0ATotal: Rp${totalHargaEl.textContent}`;
+  const pesan = buatPesan();
   window.open(`https://wa.me/6285171130091?text=${pesan}`, "_blank");
 });
+
+renderMenu();
