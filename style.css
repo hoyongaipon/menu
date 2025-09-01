@@ -1,102 +1,72 @@
-
-
-header .alamat {
-  margin: 5px 0;
-  font-size: 14px;
-  font-weight: bold;
-  color: #444;
-}
-
-header p {
-  margin: 5px 0 0;
-  font-style: italic;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f9f4ef;
   color: #333;
 }
-#daftar-menu .menu-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  margin-bottom: 8px;
+
+header {
+  text-align: center;
+  background: #f7e9d7;
+  padding: 20px;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h1 {
+  margin: 0;
+  color: #5c2c0c;
+}
+
+.menu-section {
+  max-width: 800px;
+  margin: 20px auto;
   background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.menu-name {
-  font-weight: 500;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
 }
 
-.menu-price {
-  font-weight: bold;
-  color: #5a3e1b;
-}
-
-#daftar-menu .menu-price {
-  font-weight: bold;
-  color: #5a3e1b;
-}
-
-.menu h2,
-.form h2 {
-  margin-bottom: 10px;
-  color: #5a3212;
-}
-#daftar-menu .menu-item {
-  display: flex;
-  justify-content: space-between;
+th, td {
+  border-bottom: 1px solid #ddd;
   padding: 10px;
-  margin-bottom: 8px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.menu-name {
-  font-weight: 500;
-}
-
-.menu-price {
-  font-weight: bold;
-  color: #5a3e1b;
-}
-
-/* form pesan sekarang */
-#order-menu .order-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #fff;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-#order-menu label {
-  flex: 1;
-}
-
-#order-menu input[type="checkbox"] {
-  margin-left: 10px;
-}
-
-#order-menu input[type="number"] {
-  width: 60px;
-  padding: 6px;
-  margin-left: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
   text-align: center;
 }
 
-/* total harga */
-.total-container {
+th {
+  background: #f5deb3;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+}
+
+.total-box {
   margin-top: 15px;
-  padding: 12px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  font-size: 18px;
-  color: #333;
+  font-size: 1.2em;
   text-align: right;
-  border: 1px solid #ddd;
+}
+
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  background: #5c2c0c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #7a3c13;
 }
