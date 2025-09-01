@@ -1,30 +1,39 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: #f9f4ef;
-  color: #333;
+  padding: 0;
+  background: url("img/bg-roti.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.8);
+  z-index: -1;
+}
+
+.container {
+  width: 95%;
+  max-width: 1000px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 header {
   text-align: center;
-  background: #f7e9d7;
-  padding: 20px;
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }
 
-h1 {
+header h1 {
   margin: 0;
-  color: #5c2c0c;
-}
-
-.menu-section {
-  max-width: 800px;
-  margin: 20px auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  color: #5a3e1b;
 }
 
 table {
@@ -33,40 +42,55 @@ table {
   margin-top: 10px;
 }
 
-th, td {
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
   text-align: center;
 }
 
-th {
-  background: #f5deb3;
+table th {
+  background: #f0e6d2;
+}
+
+table img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
 }
 
 input[type="number"] {
   width: 60px;
-  padding: 5px;
   text-align: center;
 }
 
-.total-box {
-  margin-top: 15px;
-  font-size: 1.2em;
-  text-align: right;
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+textarea {
+  width: 100%;
+  height: 60px;
+}
+
+#totalHarga {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #5a3e1b;
 }
 
 button {
-  margin-top: 15px;
-  width: 100%;
-  padding: 12px;
-  background: #5c2c0c;
-  color: #fff;
+  padding: 10px 20px;
+  font-size: 1em;
+  background: #5a3e1b;
+  color: white;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
   cursor: pointer;
 }
 
-button:hover {
-  background: #7a3c13;
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
 }
