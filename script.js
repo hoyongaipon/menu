@@ -13,7 +13,7 @@ const menu = [
   { nama: "Kacang (Double)", harga: 20000, gambar: "img/kacang.jpg" },
   { nama: "Coklat Kacang (Double)", harga: 20000, gambar: "img/coklatkacang.jpg" },
   { nama: "Coklat Keju (Double)", harga: 20000, gambar: "img/coklat keju.jpg" },
-  { nama: "Full Keju (Single)", harga: 15000, gambar: "img/img/fullkeju.jpg" },
+  { nama: "Full Keju (Single)", harga: 15000, gambar: "img/fullkeju.jpg" },
   { nama: "Tiramisu (Single)", harga: 15000, gambar: "img/tiramisu.jpg" },
   { nama: "Choco Spread (Single)", harga: 15000, gambar: "img/Choco SpreadChoco Spread.jpg" },
   { nama: "Choco Crunchy (Single)", harga: 15000, gambar: "img/choco.jpg" },
